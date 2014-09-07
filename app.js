@@ -27,19 +27,17 @@ t.on('error', function (err) {
 // // 10 minutes later
 // t.untrack('pizza');
 
-var hasObscenity = function hasObscenity (tweet){
+var hasExplicative = function hasExplicative (tweet){
 
 };
 var hasQuestion = function hasQuestion (tweet){
-
-	var q = ['what', 'how', 'when', 'where', 'why', '?'];
-	var words = tweet.split(' ');
+	//reasonable assumption of question
+	var q = ['what', 'how', 'when', 'where', 'why', '?', 'help'];
 	var isQuestion = false;
-	console.log(words);
 	_.each(words, function (data) {
-		if(_.contains(q,data)){
-			isQuestion = true;
-		}
+		if(tweet.indexOf(data)>=0){
+			isQuestion= true;
+		};
 	});
 	return isQuestion;
 };
