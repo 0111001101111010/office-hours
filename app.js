@@ -1,5 +1,6 @@
 var Twitter = require('node-tweet-stream');
 var config =  require("./config.json");
+var _ = require('lodash');
 var t = new Twitter(config);
 
 t.on('tweet', function (tweet) {
@@ -25,3 +26,20 @@ t.on('error', function (err) {
 //
 // // 10 minutes later
 // t.untrack('pizza');
+
+var hasObscenity = function hasObscenity (tweet){
+
+};
+var hasQuestion = function hasQuestion (tweet){
+
+	var q = ['what', 'how', 'when', 'where', 'why', '?'];
+	var words = tweet.split(' ');
+	var isQuestion = false;
+	console.log(words);
+	_.each(words, function (data) {
+		if(_.contains(q,data)){
+			isQuestion = true;
+		}
+	});
+	return isQuestion;
+};
