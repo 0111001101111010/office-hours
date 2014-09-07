@@ -1,5 +1,7 @@
 var Twitter = require('node-tweet-stream');
-var t = new Twitter('./config.json');
+var config =  require("./config.json");
+var t = new Twitter(config);
+
 t.on('tweet', function (tweet) {
   //console.log(tweet);
   /*
@@ -7,7 +9,7 @@ t.on('tweet', function (tweet) {
   In user.lang='en'
   */
   if(!tweet.retweeted && tweet.user.lang==='en'){
-console.log(tweet.text);
+    console.log(tweet.text);
   }
 });
 
